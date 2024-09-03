@@ -1,3 +1,5 @@
+import ButtonComponent from "./ButtonComponent";
 import InputComponent from "./InputComponent";
+import LabelComponent from "./LabelComponent";
 
-export { InputComponent };
+export { InputComponent, ButtonComponent, LabelComponent };

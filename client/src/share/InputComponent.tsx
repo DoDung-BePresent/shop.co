@@ -1,16 +1,25 @@
 import { Input } from "antd";
-import { SearchNormal1 } from "iconsax-react";
+import { MessageText, SearchNormal1 } from "iconsax-react";
 
-const InputComponent = () => {
+interface Props {
+  isSearch: boolean;
+}
+
+const InputComponent = (props: Props) => {
+  const { isSearch } = props;
   return (
     <Input
-      className="w-[600px]"
-      placeholder="Search for product..."
+      className={isSearch ? `w-[600px]` : ""}
+      placeholder={
+        isSearch ? "Search for product..." : "Enter your email address"
+      }
       size="large"
       style={{
-        backgroundColor: "#F0F0F0",
+        backgroundColor: isSearch ? "#F0F0F0" : "#ffffff",
       }}
-      prefix={<SearchNormal1 size={22} />}
+      prefix={
+        isSearch ? <SearchNormal1 size={22} /> : <MessageText size={22} />
+      }
     />
   );
 };

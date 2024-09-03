@@ -1,6 +1,9 @@
 import Banner from "../assets/banner.png";
-import { BrandSlider } from "../components";
+import { BrandSlider, ProductComponent } from "../components";
 import ButtonComponent from "../share/ButtonComponent";
+
+import { products } from "../data/data.js";
+import { Divider } from "antd";
 
 const Home = () => {
   return (
@@ -19,7 +22,7 @@ const Home = () => {
               designed to bring out your individuality and cater to your sense
               of style.
             </p>
-            <ButtonComponent>Shop Now</ButtonComponent>
+            <ButtonComponent variant="dark">Shop Now</ButtonComponent>
           </div>
           <div className="flex items-center gap-5">
             <div className="py-2 pr-5">
@@ -42,8 +45,41 @@ const Home = () => {
       {/* New Arrivals */}
       <div className="section">
         <h2 className="text-center text-5xl font-extrabold">NEW ARRIVALS</h2>
-        <div>
-          
+        <div className="my-10 flex items-center justify-between gap-5">
+          {products.map((item: any) => (
+            <ProductComponent
+              title={item.title}
+              image={item.images[0]}
+              rate={item.rating}
+              price={item.price}
+              isDiscount={item.isDiscount}
+              discountPer={item.discountPercentage}
+            />
+          ))}
+        </div>
+        <div className="text-center">
+          <ButtonComponent variant="light">Show More</ButtonComponent>
+        </div>
+      </div>
+      {/* Divider */}
+      <Divider />
+      {/* Top Selling */}
+      <div className="section">
+        <h2 className="text-center text-5xl font-extrabold">TOP SELLING</h2>
+        <div className="my-10 flex items-center justify-between gap-5">
+          {products.map((item: any) => (
+            <ProductComponent
+              title={item.title}
+              image={item.images[0]}
+              rate={item.rating}
+              price={item.price}
+              isDiscount={item.isDiscount}
+              discountPer={item.discountPercentage}
+            />
+          ))}
+        </div>
+        <div className="text-center">
+          <ButtonComponent variant="light">Show More</ButtonComponent>
         </div>
       </div>
     </div>

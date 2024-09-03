@@ -15,13 +15,6 @@ createRoot(document.getElementById("root")!).render(
             activeShadow: "#F0F0F0",
             borderRadiusLG: 18,
           },
-          Button: {
-            defaultBorderColor: "none",
-            defaultHoverBorderColor: "#707070",
-            defaultHoverColor: "#707070",
-            defaultActiveColor: "#707070",
-            defaultActiveBorderColor: "#707070",
-          },
         },
       }}
     >

@@ -1,5 +1,7 @@
 import BrandSlider from "./BrandSlider";
-import HeaderComponent from "./HeaderComponent";
+import Footer from "./Footer";
+import Header from "./Header";
+import ProductComponent from "./ProductComponent";
 import TopBar from "./TopBar";
 
-export { TopBar, HeaderComponent, BrandSlider };
+export { TopBar, Header, BrandSlider, ProductComponent, Footer };
