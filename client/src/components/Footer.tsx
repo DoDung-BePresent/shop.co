@@ -25,7 +25,7 @@ const Footer = () => {
           </ButtonComponent>
         </div>
       </div>
-      <div className="absolute top-20 -z-10 w-full bg-gray pb-20 pt-40">
+      <div className="absolute top-20 -z-10 w-full bg-gray pb-10 pt-40">
         <div className="container mx-auto flex justify-between">
           <div className="flex w-[20vw] flex-col gap-5">
             <h1 className="text-4xl font-bold">SHOP.CO</h1>
