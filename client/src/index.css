@@ -48,3 +48,8 @@
 .slide5 {
   animation-delay: calc(10s / 5 * (5 - 5) * -1);
 }
+
+/* Label Colors */
+.label-color:hover div {
+  display: block;
+}

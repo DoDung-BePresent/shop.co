@@ -26,7 +26,6 @@ const Home = () => {
       try {
         const response = await axios.get("http://localhost:5000/api/products/");
         setProducts(response.data.products);
-        console.log(response.data.products);
       } catch (error: any) {
         message.error(error.message);
       } finally {
@@ -87,6 +86,7 @@ const Home = () => {
         <div className="my-10 flex items-center justify-between gap-5">
           {products.map((item: any) => (
             <ProductComponent
+              id={item._id}
               title={item.title}
               image={item.images[0].url}
               rate={item.rating}
@@ -108,6 +108,7 @@ const Home = () => {
         <div className="my-10 flex items-center justify-between gap-5">
           {products.map((item: any) => (
             <ProductComponent
+              id={item._id}
               title={item.title}
               image={item.images[0].url}
               rate={item.rating}

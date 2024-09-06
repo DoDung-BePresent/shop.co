@@ -15,6 +15,10 @@ createRoot(document.getElementById("root")!).render(
             activeShadow: "#F0F0F0",
             borderRadiusLG: 18,
           },
+          Breadcrumb: {
+            fontFamily: "Poppins",
+            fontSize: 18,
+          },
         },
       }}
     >
