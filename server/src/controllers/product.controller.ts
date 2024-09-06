@@ -69,4 +69,22 @@ const addProduct = async (req: Request, res: Response) => {
   }
 };
 
-export { addProduct, getProducts };
+// Get a single product
+// API: /api/products/:id
+// UNPROTECTED
+
+const getProductById = async (req: Request, res: Response) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    return res.status(200).json({ product });
+  } catch (error: any) {
+    return res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
+  }
+};
+
+export { addProduct, getProducts, getProductById };
