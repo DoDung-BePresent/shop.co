@@ -1,11 +1,50 @@
 import Banner from "../assets/banner.png";
-import { BrandSlider, ProductComponent } from "../components";
 import ButtonComponent from "../share/ButtonComponent";
+import { BrandSlider, ProductComponent } from "../components";
 
-import { products } from "../data/data.js";
-import { Divider } from "antd";
+import { Divider, message, Spin } from "antd";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+interface Product {
+  _id: string;
+  title: string;
+  image: string;
+  rate: number;
+  price: number;
+  isActive: boolean;
+  discountPer: number;
+}
 
 const Home = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get("http://localhost:5000/api/products/");
+        setProducts(response.data.products);
+        console.log(response.data.products);
+      } catch (error: any) {
+        message.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="mt-80 h-[50vh] w-full text-center">
+        <Spin size={"large"} />
+      </div>
+    );
+  }
+
   return (
     <div>
       {/* Banner Cover */}
@@ -49,11 +88,11 @@ const Home = () => {
           {products.map((item: any) => (
             <ProductComponent
               title={item.title}
-              image={item.images[0]}
+              image={item.images[0].url}
               rate={item.rating}
               price={item.price}
-              isDiscount={item.isDiscount}
-              discountPer={item.discountPercentage}
+              isActive={item.discount.isActive}
+              discountPer={item.discount.percentage}
             />
           ))}
         </div>
@@ -70,11 +109,11 @@ const Home = () => {
           {products.map((item: any) => (
             <ProductComponent
               title={item.title}
-              image={item.images[0]}
+              image={item.images[0].url}
               rate={item.rating}
               price={item.price}
-              isDiscount={item.isDiscount}
-              discountPer={item.discountPercentage}
+              isActive={item.discount.isActive}
+              discountPer={item.discount.percentage}
             />
           ))}
         </div>

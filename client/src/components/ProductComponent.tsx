@@ -5,16 +5,16 @@ interface Props {
   image: string;
   rate: number;
   price: number;
-  isDiscount: boolean;
+  isActive: boolean;
   discountPer: number;
 }
 
 const ProductComponent = (props: Props) => {
-  const { title, image, rate, price, isDiscount, discountPer } = props;
+  const { title, image, rate, price, isActive, discountPer } = props;
   return (
-    <div className="w-[25vw]">
+    <div className="w-[25vw] rounded-xl">
       <img
-        className="h-[22vw] w-full rounded-xl object-cover object-top"
+        className="h-[22vw] w-full rounded-xl object-cover object-top duration-150 ease-in hover:scale-105"
         src={image}
         alt=""
       />
@@ -31,13 +31,13 @@ const ProductComponent = (props: Props) => {
           <span>{rate}/5</span>
         </div>
         <div className="flex items-center gap-3 text-2xl font-semibold">
-          {isDiscount && <h2>${price - (price * discountPer) / 100}</h2>}
+          {isActive && <h2>${price - (price * discountPer) / 100}</h2>}
           <h2
-            className={`${isDiscount ? "text-[rgb(0,0,0,0.4)] line-through" : ""}`}
+            className={`${isActive ? "text-[rgb(0,0,0,0.4)] line-through" : ""}`}
           >
             ${price}
           </h2>
-          {isDiscount && (
+          {isActive && (
             <span className="rounded-xl bg-red-100 p-1 px-3 text-sm text-red-500">
               -20%
             </span>
